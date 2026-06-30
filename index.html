@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roja Karim | AI & Cyber Portfolio</title>
+  <link rel="shortcut icon" href="./assests/WhatsApp Image 2025-09-06 at 03.56.17_ff00e051.jpg" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/9e5281f83e.js" crossorigin="anonymous"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <style>
+    /* ----- RESET & BASE ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+    body {
+      background: #0a0a0a;
+      color: #fff;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    a {
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    h1,h2,h3,h4,h5,h6 {
+      font-weight: 600;
+    }
+
+    /* ----- NAVBAR ----- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      position: fixed;
+      width: 100%;
+      z-index: 999;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(5px);
+    }
+    .navbar a.logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0ff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 5px #0ff;
+    }
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+    .navbar ul li a {
+      color: #fff;
+      font-weight: 500;
+      position: relative;
+    }
+    .navbar ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: #0ff;
+      transition: 0.3s;
+    }
+    .navbar ul li a:hover::after {
+      width: 100%;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #0ff;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    /* ----- HERO ----- */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: floatHero 3s ease-in-out infinite;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      color: #0ff;
+      text-shadow: 0 0 15px #0ff, 0 0 30px #f0f;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      color: #fff;
+      margin: 20px 0;
+      text-shadow: 0 0 5px #f0f;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      margin: 10px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+      position: relative;
+    }
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      opacity: 0;
+      transition: 0.3s;
+      box-shadow: 0 0 25px #0ff, 0 0 50px #f0f;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    .btn:hover::after {
+      opacity: 1;
+    }
+    .btn-border {
+      background: transparent;
+      color: #0ff;
+      border: 2px solid #0ff;
+      font-weight: 700;
+      overflow: hidden;
+    }
+    .btn-border::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 255, 255, 0.1);
+      transition: 0.3s;
+      z-index: 0;
+    }
+    .btn-border:hover {
+      color: #000;
+      background: #0ff;
+      box-shadow: 0 0 15px #0ff, 0 0 30px #f0f;
+    }
+    .btn-border:hover::after {
+      left: 0;
+    }
+
+    /* ----- SECTIONS ----- */
+    .section {
+      padding: 100px 50px;
+      position: relative;
+      z-index: 2;
+    }
+    h2 {
+      font-size: 2.5rem;
+      color: #0ff;
+      text-align: center;
+      margin-bottom: 50px;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #f0f;
+    }
+
+    /* ----- ABOUT ----- */
+    .about {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+    }
+    .about-image, .about-text {
+      flex: 1;
+    }
+    .about-text p {
+      margin: 15px 0;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    /* ----- PROJECTS (Experience) ----- */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: #111;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #0ff, 0 0 30px #f0f;
+      transition: 0.4s;
+      position: relative;
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: 0.4s;
+    }
+    .card-content {
+      padding: 15px;
+    }
+    .card-content h3 {
+      color: #0ff;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .card-content p {
+      color: #ccc;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .card-content .tag {
+      display: inline-block;
+      background: #0ff;
+      color: #000;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+    }
+    .card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 0 40px #0ff, 0 0 70px #f0f;
+    }
+    .card:hover img {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+
+    /* ----- SKILLS ----- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .skill-bar {
+      background: #111;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 25px;
+      margin-top: 10px;
+      box-shadow: 0 0 15px #0ff, 0 0 30px #f0f;
+      animation: pulseSkill 2.5s infinite alternate;
+    }
+    .skill-fill {
+      background: #0ff;
+      height: 100%;
+      width: 0;
+      text-align: right;
+      padding-right: 5px;
+      color: #000;
+      font-weight: 700;
+      line-height: 25px;
+      transition: 1s ease;
+    }
+    @keyframes pulseSkill {
+      0% { box-shadow: 0 0 10px #0ff, 0 0 20px #f0f; }
+      50% { box-shadow: 0 0 20px #0ff, 0 0 40px #f0f; }
+      100% { box-shadow: 0 0 10px #0ff, 0 0 20px #f0f; }
+    }
+
+    /* ----- STATS ----- */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+    .stat h3 {
+      font-size: 2rem;
+      color: #0ff;
+      margin-bottom: 5px;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #f0f;
+    }
+    .stat p {
+      color: #ccc;
+    }
+
+    /* ----- TESTIMONIALS ----- */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .testimonial {
+      background: #111;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #0ff, 0 0 30px #f0f;
+      transition: 0.3s;
+    }
+    .testimonial:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+    .testimonial p {
+      color: #ccc;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+    .testimonial h4 {
+      color: #0ff;
+      font-weight: 600;
+    }
+
+    /* ----- BLOG (renamed insights) ----- */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .blog-card {
+      background: #111;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #f0f, 0 0 25px #0ff;
+      transition: 0.3s;
+    }
+    .blog-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+    .blog-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 0 40px #f0f, 0 0 60px #0ff;
+    }
+    .blog-card h3 {
+      color: #f0f;
+      font-size: 1.2rem;
+      margin: 15px;
+    }
+    .blog-card p {
+      color: #ccc;
+      margin: 0 15px 15px;
+    }
+    .blog-card .btn-blog {
+      margin: 0 15px 15px;
+      background: #f0f;
+      color: #000;
+      font-weight: 700;
+    }
+
+    /* ----- CERTIFICATES (new) ----- */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    .cert-item {
+      background: #111;
+      padding: 20px 10px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 15px #0ff, 0 0 30px #f0f;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .cert-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #0ff, 0 0 60px #f0f;
+    }
+    .cert-item i {
+      font-size: 2.5rem;
+      color: #0ff;
+      margin-bottom: 10px;
+    }
+    .cert-item p {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    /* ----- CONTACT ----- */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      animation: floatContact 3s ease-in-out infinite;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      background: #111;
+      color: #fff;
+      box-shadow: 0 0 10px #0ff, 0 0 20px #f0f;
+      transition: 0.3s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 20px #0ff, 0 0 40px #f0f;
+    }
+    .contact-form button {
+      align-self: flex-start;
+      background: #0ff;
+      color: #000;
+      font-weight: 700;
+      padding: 12px 25px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 15px #0ff, 0 0 30px #f0f;
+      transition: 0.3s;
+    }
+    .contact-form button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #0ff, 0 0 60px #f0f;
+    }
+
+    /* ----- FOOTER ----- */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #111;
+      color: #ccc;
+    }
+    footer span {
+      color: #0ff;
+    }
+
+    /* ----- ANIMATIONS ----- */
+    @keyframes floatHero {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes floatContact {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ----- CURSOR ----- */
+    .cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 15px;
+      height: 15px;
+      background: #0ff;
+      border-radius: 50%;
+      pointer-events: none;
+      mix-blend-mode: difference;
+      transition: transform 0.1s ease;
+    }
+    .cursor-outline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      border: 2px solid #0ff;
+      border-radius: 50%;
+      pointer-events: none;
+      mix-blend-mode: difference;
+      transition: transform 0.15s ease;
+    }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 768px) {
+      .navbar ul {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px #0ff;
+      }
+      .navbar ul.open {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .about {
+        flex-direction: column;
+      }
+      #hero {
+        padding-top: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Particles Background -->
+<div id="tsparticles"></div>
+
+<!-- Navbar -->
+<header>
+  <nav class="navbar">
+    <a href="#hero" class="logo">Roja<span>.</span></a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#stats">Stats</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#blog">Insights</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section id="hero" class="section hero">
+  <div class="hero-content" data-aos="fade-up">
+    <h1>Hello, I’m <span>Roja Karim</span></h1>
+    <p><span id="typed"></span></p><br>
+    <a href="#projects" class="btn btn-border">Explore My Work</a>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="section about">
+  <div class="about-image" data-aos="fade-right">
+    <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_totrpclr.json" background="transparent" speed="1" style="width:350px;height:350px;" loop autoplay></lottie-player>
+  </div>
+  <div class="about-text" data-aos="fade-left">
+    <h2>About Me</h2>
+    <p>I’m a passionate <b>AI & Cybersecurity</b> enthusiast with a strong foundation in software engineering, data analytics, and quantitative research. I’ve completed job simulations with <b>Commonwealth Bank</b>, <b>Deloitte</b>, <b>Vista</b>, and <b>JPMorgan Chase</b> through Forage, sharpening my skills in real-world scenarios.</p>
+    <p>Currently working as a <b>Data Services Specialist</b> at RWS, I combine technical expertise with a creative mindset. I’m fluent in Bangla, English, and Hindi, and I hold certifications in <b>Claude 101</b>, <b>Cybersecurity 101</b>, and <b>AI Fluency & Foundation</b>. I also completed a Web Development course with Programming Hero.</p>
+    <p>My goal is to bridge the gap between AI, cybersecurity, and data-driven innovation — building solutions that are secure, intelligent, and impactful.</p>
+  </div>
+</section>
+
+<!-- Experience (Projects) -->
+<section id="projects" class="section projects">
+  <h2 data-aos="fade-up">Professional Experience</h2>
+  <div class="project-grid">
+    <div class="card" data-aos="flip-left" data-aos-delay="100">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="RWS">
+      <div class="card-content">
+        <h3>Data Services Specialist – RWS</h3>
+        <p>Currently managing data quality, annotation, and analysis for AI/ML projects.</p>
+        <span class="tag">Data</span>
+      </div>
+    </div>
+    <div class="card" data-aos="flip-left" data-aos-delay="150">
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80" alt="ASAP">
+      <div class="card-content">
+        <h3>Travel Agent – ASAP Tickets</h3>
+        <p>Independent agent handling international bookings, itineraries, and customer support.</p>
+        <span class="tag">Travel</span>
+      </div>
+    </div>
+    <div class="card" data-aos="flip-left" data-aos-delay="200">
+      <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=800&q=80" alt="Forage">
+      <div class="card-content">
+        <h3>Job Simulations (Forage)</h3>
+        <p>Completed: Commonwealth Bank (SWE), Deloitte (Data), Vista (AI), JPMorgan (Quant).</p>
+        <span class="tag">Simulations</span>
+      </div>
+    </div>
+    <div class="card" data-aos="flip-left" data-aos-delay="250">
+      <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=800&q=80" alt="Web Dev">
+      <div class="card-content">
+        <h3>Full Stack Web Dev – Programming Hero</h3>
+        <p>Built interactive web apps using React, Node.js, MongoDB (course completed).</p>
+        <span class="tag">Web Dev</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="section skills">
+  <h2 data-aos="fade-up">Skills & Languages</h2>
+  <div class="skills-grid" data-aos="fade-up" data-aos-delay="100">
+    <div class="skill"><h4>AI & Machine Learning</h4><div class="skill-bar"><div class="skill-fill" data-width="85%">85%</div></div></div>
+    <div class="skill"><h4>Cybersecurity</h4><div class="skill-bar"><div class="skill-fill" data-width="80%">80%</div></div></div>
+    <div class="skill"><h4>Data Analytics</h4><div class="skill-bar"><div class="skill-fill" data-width="90%">90%</div></div></div>
+    <div class="skill"><h4>Web Development</h4><div class="skill-bar"><div class="skill-fill" data-width="85%">85%</div></div></div>
+    <div class="skill"><h4>Quantitative Research</h4><div class="skill-bar"><div class="skill-fill" data-width="78%">78%</div></div></div>
+    <div class="skill"><h4>Languages (Bangla, English, Hindi)</h4><div class="skill-bar"><div class="skill-fill" data-width="100%">Fluent</div></div></div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section id="stats" class="section stats">
+  <h2 data-aos="fade-up">Fun Stats</h2>
+  <div class="stats-grid">
+    <div class="stat" data-aos="fade-up" data-aos-delay="100"><h3>4+</h3><p>Job Simulations</p></div>
+    <div class="stat" data-aos="fade-up" data-aos-delay="150"><h3>3</h3><p>Certifications</p></div>
+    <div class="stat" data-aos="fade-up" data-aos-delay="200"><h3>2</h3><p>Years in Data</p></div>
+    <div class="stat" data-aos="fade-up" data-aos-delay="250"><h3>3</h3><p>Languages</p></div>
+  </div>
+</section>
+
+<!-- Certificates (NEW) -->
+<section id="certificates" class="section">
+  <h2 data-aos="fade-up">Certificates</h2>
+  <div class="cert-grid" data-aos="fade-up" data-aos-delay="100">
+    <div class="cert-item" onclick="window.open('./assests/cer1.pdf','_blank')">
+      <i class="fas fa-certificate"></i>
+      <p>Claude 101</p>
+    </div>
+    <div class="cert-item" onclick="window.open('./assests/cer2.pdf','_blank')">
+      <i class="fas fa-certificate"></i>
+      <p>Cybersecurity 101</p>
+    </div>
+    <div class="cert-item" onclick="window.open('./assests/cer3.pdf','_blank')">
+      <i class="fas fa-certificate"></i>
+      <p>AI Fluency & Foundation</p>
+    </div>
+    <div class="cert-item" onclick="window.open('./assests/cer4.pdf','_blank')">
+      <i class="fas fa-certificate"></i>
+      <p>Commonwealth Bank (SWE)</p>
+    </div>
+    <div class="cert-item" onclick="window.open('./assests/cer5.pdf','_blank')">
+      <i class="fas fa-certificate"></i>
+      <p>Deloitte Data Analytics</p>
+    </div>
+    <div class="cert-item" onclick="window.open('./assests/cer6.pdf','_blank')">
+      <i class="fas fa-certificate"></i>
+      <p>Vista AI in Action</p>
+    </div>
+    <div class="cert-item" onclick="window.open('./assests/cer7.pdf','_blank')">
+      <i class="fas fa-certificate"></i>
+      <p>JPMorgan Quant Research</p>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials" class="section testimonials">
+  <h2 data-aos="fade-up">What People Say</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial" data-aos="fade-up" data-aos-delay="100">
+      <p>"Roja's analytical skills and AI knowledge are outstanding. A true asset to any data team."</p>
+      <h4>- Vista Trainer </h4>
+    </div>
+    <div class="testimonial" data-aos="fade-up" data-aos-delay="150">
+      <p>"Her ability to quickly grasp complex quantitative concepts is impressive."</p>
+      <h4>- JPMorgan Forage Mentor</h4>
+    </div>
+    <div class="testimonial" data-aos="fade-up" data-aos-delay="200">
+      <p>"Professional, dedicated, and always eager to learn. Highly recommend Roja."</p>
+      <h4>- Deloitte Simulation Coach</h4>
+    </div>
+  </div>
+</section>
+
+<!-- Blog / Insights -->
+<section id="blog" class="section blog">
+  <h2 data-aos="fade-up">Recent Insights</h2>
+  <div class="blog-grid">
+    <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
+      <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=800&q=80" alt="AI">
+      <h3>AI in Cybersecurity</h3>
+      <p>Exploring how AI is reshaping threat detection and response.</p>
+      <a href="#" class="btn btn-blog">Read More</a>
+    </div>
+    <div class="blog-card" data-aos="fade-up" data-aos-delay="150">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Data">
+      <h3>Data Ethics & Privacy</h3>
+      <p>Why responsible data handling is the cornerstone of modern AI.</p>
+      <a href="#" class="btn btn-blog">Read More</a>
+    </div>
+    <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80" alt="Quant">
+      <h3>Quant Research Demystified</h3>
+      <p>A beginner's guide to quantitative analysis in finance.</p>
+      <a href="#" class="btn btn-blog">Read More</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section contact">
+  <h2 data-aos="fade-up">Contact Me</h2>
+ <form class="contact-form" data-aos="fade-up" data-aos-delay="200" 
+      action="mailto:rojakorim42@gmail.com" 
+      method="POST" 
+      enctype="text/plain">
+  <input type="text" name="Name" placeholder="Your Name" required>
+  <input type="email" name="Email" placeholder="Your Email" required>
+  <textarea name="Message" placeholder="Your Message" rows="5" required></textarea>
+  <button type="submit" class="btn">Send Message</button>
+</form>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 <span>Roja Karim</span> | AI & Cybersecurity Enthusiast</p>
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Typed.js
+  var typed = new Typed('#typed', {
+    strings: ["AI Enthusiast", "Cybersecurity Explorer", "Data Services Specialist", "Quant Researcher", "Full Stack Developer"],
+    typeSpeed: 80,
+    backSpeed: 50,
+    loop: true
+  });
+
+  // Skills Fill on scroll
+  window.addEventListener('scroll', () => {
+    const skills = document.querySelectorAll('.skill-fill');
+    skills.forEach(skill => {
+      const width = skill.getAttribute('data-width');
+      const rect = skill.getBoundingClientRect();
+      if (rect.top < window.innerHeight) skill.style.width = width;
+    });
+  });
+
+  // AOS
+  AOS.init({ duration: 1000, offset: 100 });
+
+  // Hamburger
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => { navLinks.classList.toggle('open'); });
+
+  // Custom Cursor
+  const cursor = document.createElement('div');
+  cursor.classList.add('cursor');
+  document.body.appendChild(cursor);
+  const cursorOutline = document.createElement('div');
+  cursorOutline.classList.add('cursor-outline');
+  document.body.appendChild(cursorOutline);
+  document.addEventListener('mousemove', e => {
+    cursor.style.transform = `translate(${e.clientX - 7.5}px, ${e.clientY - 7.5}px)`;
+    cursorOutline.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
+  });
+
+  // tsParticles
+  tsParticles.load("tsparticles", {
+    fpsLimit: 60,
+    interactivity: { events: { onHover: { enable: true, mode: "repulse" } } },
+    particles: {
+      color: { value: ["#0ff", "#f0f", "#ff0", "#f0f"] },
+      links: { enable: true, color: "#0ff", distance: 150, opacity: 0.4, width: 1 },
+      collisions: { enable: true },
+      move: { enable: true, direction: "none", random: true, speed: 1, straight: false },
+      number: { value: 80, density: { enable: true, value_area: 800 } },
+      opacity: { value: 0.7 },
+      shape: { type: "circle" },
+      size: { value: { min: 2, max: 5 } }
+    },
+    detectRetina: true
+  });
+</script>
+</body>
+</html>
